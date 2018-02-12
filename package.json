@@ -1,0 +1,34 @@
+{
+  "name": "cod-api",
+  "version": "1.0.0",
+  "description": "A Call of Duty Network API written in Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "call",
+    "of",
+    "duty",
+    "cod",
+    "api",
+    "cod",
+    "api",
+    "ww2",
+    "infinite",
+    "warfare",
+    "black",
+    "ops",
+    "modern",
+    "warfare",
+    "call",
+    "of",
+    "duty",
+    "api"
+  ],
+  "author": "Jake Richards",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
+}
