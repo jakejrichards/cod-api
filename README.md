@@ -38,7 +38,7 @@ var options = {
 };
 ```
 
-### Get Profile
+## Get Profile
 
 ```
 codAPI.getProfile(options, function(profile){
