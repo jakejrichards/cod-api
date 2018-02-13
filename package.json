@@ -2,7 +2,7 @@
   "name": "cod-api",
   "version": "1.0.0",
   "description": "A Call of Duty Network API written in Node.js",
-  "main": "index.js",
+  "main": "cod.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
