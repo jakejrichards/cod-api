@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "A Call of Duty Network API written in Node.js",
   "main": "cod.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": {
+    "name": "Jake Richards",
+    "email": "jjrichar@go.olemiss.edu"
   },
   "keywords": [
     "call",
@@ -27,9 +28,12 @@
     "api"
   ],
   "author": "Jake Richards",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "request": "^2.83.0"
   },
-  "repository": "https://github.com/jakejrichards/cod-api.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakejrichards/cod-api.git"
+  }
 }
