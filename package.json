@@ -30,5 +30,6 @@
   "license": "ISC",
   "dependencies": {
     "request": "^2.83.0"
-  }
+  },
+  "repository": "https://github.com/jakejrichards/cod-api.git"
 }
