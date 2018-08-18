@@ -1,13 +1,13 @@
 {
   "name": "cod-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Call of Duty Network API written in Node.js",
   "homepage": "https://github.com/jakejrichards/cod-api",
   "bugs": {
     "url": "https://github.com/jakejrichards/cod-api/issues",
     "email": "jjrichar@go.olemiss.edu"
   },
-  "main": "cod.js",
+  "main": "index.js",
   "author": {
     "name": "Jake Richards",
     "email": "jjrichar@go.olemiss.edu"
