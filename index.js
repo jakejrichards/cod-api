@@ -1,13 +1,11 @@
-"use strict";
+const request = require('request');
 
-var request = require("request");
-
-exports.getProfile = function(options, callback) {
-    var uri = "https://my.callofduty.com/api/papi-client/crm/cod/v2/title/"+options.title+"/platform/"+options.platform+"/gamer/"+options.username+"/profile/";
-    request.get(uri, function(error, response, body){
-        var obj = JSON.parse(body);
-        if(!error){
-            if(obj.status === "success"){
+const getLeaderboards = (options, callback) => {
+    const uri = `https://my.callofduty.com/api/papi-client/leaderboards/v2/title/${options.title}/platform/${options.platform}/time/${options.time}/type/${options.type}/mode/${options.mode}/gamer/${options.username}`;
+    request.get(uri, (error, response, body) => {
+        const obj = JSON.parse(body);
+        if (!error){
+            if (obj.status === "success"){
                 callback(obj.data);
             } else {
                 console.log("Error: " + obj.data.message);
@@ -18,12 +16,28 @@ exports.getProfile = function(options, callback) {
     });
 };
 
-exports.getRecentMatches = function(options, callback) {
-    var uri = "https://my.callofduty.com/api/papi-client/crm/cod/v2/title/"+options.title+"/platform/"+options.platform+"/gamer/"+options.username+"/matches/days/"+options.days;
-    request.get(uri, function(error, response, body){
-        var obj = JSON.parse(body);
-        if(!error){
-            if(obj.status === "success"){
+const getProfile = (options, callback) => {
+    const uri = `https://my.callofduty.com/api/papi-client/crm/cod/v2/title/${options.title}/platform/${options.platform}/gamer/${options.username}/profile/`;
+    request.get(uri, (error, response, body) => {
+        const obj = JSON.parse(body);
+        if (!error){
+            if (obj.status === "success"){
+                callback(obj.data);
+            } else {
+                console.log("Error: " + obj.data.message);
+            }
+        } else {
+            console.log("Error: " + error);
+        }
+    });
+};
+
+const getRecentMatches = (options, callback) => {
+    const uri = `https://my.callofduty.com/api/papi-client/crm/cod/v2/title/${options.title}/platform/${options.platform}/gamer/${options.username}/matches/days/${options.days}`;
+    request.get(uri, (error, response, body) => {
+        const obj = JSON.parse(body);
+        if (!error){
+            if (obj.status === "success"){
                 callback(obj.data.matches);
             } else {
                 console.log("Error: " + obj.data.message);
@@ -34,12 +48,12 @@ exports.getRecentMatches = function(options, callback) {
     });
 };
 
-exports.getRecentSummary = function(options, callback) {
-    var uri = "https://my.callofduty.com/api/papi-client/crm/cod/v2/title/"+options.title+"/platform/"+options.platform+"/gamer/"+options.username+"/matches/days/"+options.days;
-    request.get(uri, function(error, response, body){
-        var obj = JSON.parse(body);
-        if(!error){
-            if(obj.status === "success"){
+const getRecentSummary = (options, callback) => {
+    const uri = `https://my.callofduty.com/api/papi-client/crm/cod/v2/title/${options.title}/platform/${options.platform}/gamer/${options.username}/matches/days/${options.days}`;
+    request.get(uri, (error, response, body) => {
+        const obj = JSON.parse(body);
+        if (!error){
+            if (obj.status === "success"){
                 callback(obj.data.summary);
             } else {
                 console.log("Error: " + obj.data.message);
@@ -50,18 +64,10 @@ exports.getRecentSummary = function(options, callback) {
     });
 };
 
-exports.getLeaderboards = function(options, callback) {
-    var uri = "https://my.callofduty.com/api/papi-client/leaderboards/v2/title/"+options.title+"/platform/"+options.platform+"/time/"+options.time+"/type/"+options.type+"/mode/"+options.mode+"/gamer/"+options.username;
-    request.get(uri, function(error, response, body){
-        var obj = JSON.parse(body);
-        if(!error){
-            if(obj.status === "success"){
-                callback(obj.data);
-            } else {
-                console.log("Error: " + obj.data.message);
-            }
-        } else {
-            console.log("Error: " + error);
-        }
-    });
-};
+
+module.exports = {
+    getLeaderboards,
+    getProfile,
+    getRecentMatches,
+    getRecentSummary,
+}

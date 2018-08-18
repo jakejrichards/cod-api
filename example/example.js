@@ -1,4 +1,4 @@
-var codAPI = require("../cod.js");
+const { getProfile, getRecentMatches, getRecentSummary, getLeaderboards } = require('../index'); // require('cod-api');
 
 var options = {
     title: "wwii", // bo3, iw, wwii
@@ -10,19 +10,19 @@ var options = {
     mode: "war" // career, war (Team Deathmatch), dm (Free-For-All), conf (Kill Confirmed), ctf (Capture The Flag), sd (Search & Destroy), dom (Domination), ball (Gridiron), hp (Hardpoint), 1v1, raid (War)
 };
 
-codAPI.getProfile(options, function(profile){
+getProfile(options, profile => {
     console.log(profile);
 });
 
-codAPI.getRecentMatches(options, function(matches){
+getRecentMatches(options, matches => {
     console.log(matches);
 });
 
-codAPI.getRecentSummary(options, function(summary){
+getRecentSummary(options, summary => {
     console.log(summary);
 });
 
-codAPI.getLeaderboards(options, function(leaderboards){
+getLeaderboards(options, leaderboards => {
     console.log(leaderboards);
 });
 
