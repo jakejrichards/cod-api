@@ -25,9 +25,11 @@ git clone https://github.com/jakejrichards/cod-api.git
 ## Usage
 
 ```
-var codAPI = require("../cod.js");
+const codAPI = require("cod-api");
+// If you are in a browser environment or one that supports ES6 imports
+import codAPI from 'cod-api';
 
-var options = {
+const options = {
     title: "bo3", // bo3, iw, wwii
     platform: "psn", // psn, xbl, steam
     username: "Consisttt", // username
@@ -41,7 +43,7 @@ var options = {
 ## Get Profile
 
 ```
-codAPI.getProfile(options, function(profile){
+codAPI.getProfile(options, profile => {
     console.log(profile);
 });
 ```
@@ -70,7 +72,7 @@ Output:
 ## Get Recent Matches
 
 ```
-codAPI.getRecentMatches(options, function(matches){
+codAPI.getRecentMatches(options, matches => {
     console.log(matches);
 });
 ```
@@ -159,7 +161,7 @@ Output:
 ## Get Summary
 
 ```
-codAPI.getRecentSummary(options, function(summary){
+codAPI.getRecentSummary(options, summary => {
     console.log(summary);
 });
 ```
@@ -224,7 +226,7 @@ Output:
 ## Get Leaderboards
 
 ```
-codAPI.getLeaderboards(options, function(leaderboards){
+codAPI.getLeaderboards(options, leaderboards => {
     console.log(leaderboards);
 });
 ```
