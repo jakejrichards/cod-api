@@ -1,67 +1,59 @@
-const request = require('request');
+const axios = require('axios');
 
-const getLeaderboards = (options, callback) => {
-    const uri = `https://my.callofduty.com/api/papi-client/leaderboards/v2/title/${options.title}/platform/${options.platform}/time/${options.time}/type/${options.type}/mode/${options.mode}/gamer/${options.username}`;
-    request.get(uri, (error, response, body) => {
-        const obj = JSON.parse(body);
-        if (!error){
-            if (obj.status === "success"){
-                callback(obj.data);
-            } else {
-                console.log("Error: " + obj.data.message);
-            }
-        } else {
-            console.log("Error: " + error);
+const COD_API_ENDPOINT = 'https://my.callofduty.com/api/papi-client';
+
+// API Helper
+const getDataFromAPI = uri =>
+    axios.get(uri)
+    .then(({ data }) => {
+        const { status, data: error } = data;
+        if (status !== 'success') {
+            throw new Error(`cod-api request failed: ${error.message}`);
         }
+        return data;
     });
+
+// API Methods
+const getLeaderboards = ({ title, platform, time, type, mode, username }) => {
+    const leaderboardEndpoint = COD_API_ENDPOINT + '/leaderboards/v2';
+    const uri = leaderboardEndpoint +
+                `/title/${title}` +
+                `/platform/${platform}` +
+                `/time/${time}` +
+                `/type/${type}` +
+                `/mode/${mode}` +
+                `/gamer/${username}`;
+    return getDataFromAPI(uri);
 };
 
-const getProfile = (options, callback) => {
-    const uri = `https://my.callofduty.com/api/papi-client/crm/cod/v2/title/${options.title}/platform/${options.platform}/gamer/${options.username}/profile/`;
-    request.get(uri, (error, response, body) => {
-        const obj = JSON.parse(body);
-        if (!error){
-            if (obj.status === "success"){
-                callback(obj.data);
-            } else {
-                console.log("Error: " + obj.data.message);
-            }
-        } else {
-            console.log("Error: " + error);
-        }
-    });
+const getProfile = ({ title, platform, username }) => {
+    const profileEndpoint = COD_API_ENDPOINT + '/crm/cod/v2';
+    const uri = profileEndpoint +
+                `/title/${title}` +
+                `/platform/${platform}` +
+                `/gamer/${username}` +
+                `/profile`;
+    return getDataFromAPI(uri);
 };
 
-const getRecentMatches = (options, callback) => {
-    const uri = `https://my.callofduty.com/api/papi-client/crm/cod/v2/title/${options.title}/platform/${options.platform}/gamer/${options.username}/matches/days/${options.days}`;
-    request.get(uri, (error, response, body) => {
-        const obj = JSON.parse(body);
-        if (!error){
-            if (obj.status === "success"){
-                callback(obj.data.matches);
-            } else {
-                console.log("Error: " + obj.data.message);
-            }
-        } else {
-            console.log("Error: " + error);
-        }
-    });
+const getRecentMatches = ({ title, platform, username, days }) => {
+    const recentMatchesEndpoint = COD_API_ENDPOINT + '/crm/cod/v2';
+    const uri = recentMatchesEndpoint +
+                `/title/${title}` +
+                `/platform/${platform}` +
+                `/gamer/${username}` +
+                `/matches/days/${days}`;
+    return getDataFromAPI(uri);
 };
 
-const getRecentSummary = (options, callback) => {
-    const uri = `https://my.callofduty.com/api/papi-client/crm/cod/v2/title/${options.title}/platform/${options.platform}/gamer/${options.username}/matches/days/${options.days}`;
-    request.get(uri, (error, response, body) => {
-        const obj = JSON.parse(body);
-        if (!error){
-            if (obj.status === "success"){
-                callback(obj.data.summary);
-            } else {
-                console.log("Error: " + obj.data.message);
-            }
-        } else {
-            console.log("Error: " + error);
-        }
-    });
+const getRecentSummary = ({ title, platform, username, days }) => {
+    const recentSummaryEndpoint = COD_API_ENDPOINT + '/crm/cod/v2';
+    const uri = recentSummaryEndpoint +
+                `/title/${title}` +
+                `/platform/${platform}` +
+                `/gamer/${username}` +
+                `/matches/days/${days}`;
+    return getDataFromAPI(uri);
 };
 
 

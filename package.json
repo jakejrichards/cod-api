@@ -1,6 +1,6 @@
 {
   "name": "cod-api",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "A Call of Duty Network API written in Node.js",
   "homepage": "https://github.com/jakejrichards/cod-api",
   "bugs": {
@@ -34,7 +34,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "request": "^2.83.0"
+    "axios": "^0.18.0"
   },
   "repository": "github:jakejrichards/cod-api",
   "readmeFilename": "README.md"
