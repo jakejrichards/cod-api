@@ -14,7 +14,7 @@ Node.js
 You can install via the npm package manager
 
 ```
-npm install cod-api
+npm i cod-api
 ```
 
 Or clone the repository and install dependencies
@@ -29,23 +29,28 @@ const codAPI = require("cod-api");
 // If you are in a browser environment or one that supports ES6 imports
 import codAPI from 'cod-api';
 
-const options = {
-    title: "bo3", // bo3, iw, wwii
-    platform: "psn", // psn, xbl, steam
-    username: "Consisttt", // username
-    days: 1, // amount of days (required for recent matches and summary),
-    type: "hc", // core, hc, arena
-    time: "monthly", // alltime, monthly, weekly
-    mode: "war" // career, war (Team Deathmatch), dm (Free-For-All), conf (Kill Confirmed), ctf (Capture The Flag), sd (Search & Destroy), dom (Domination), ball (Gridiron), hp (Hardpoint), 1v1, raid (War)
-};
+const title = "wwii"; // bo3, iw, wwii
+const platform = "psn"; // psn, xbl, steam
+const username = "Consisttt"; // username
+const days = 7; // amount of days (required for recent matches & summary),
+const type = "core"; // core, hc, arena
+const time = "monthly"; // alltime, monthly, weekly
+const mode = "war"; // career, war (Team Deathmatch), dm (Free-For-All), conf (Kill Confirmed), ctf (Capture The Flag), sd (Search & Destroy), dom (Domination), ball (Gridiron), hp (Hardpoint), 1v1, raid (War)
+
 ```
 
 ## Get Profile
 
 ```
-codAPI.getProfile(options, profile => {
-    console.log(profile);
-});
+codAPI.getProfile({ title, platform, username })
+  .then(response => {
+    // Do something...
+    console.log(response);
+  })
+  .catch(err => {
+    // Do something with this error
+    console.log(err);
+  });
 ```
 Output:
 
@@ -72,9 +77,15 @@ Output:
 ## Get Recent Matches
 
 ```
-codAPI.getRecentMatches(options, matches => {
-    console.log(matches);
-});
+codAPI.getRecentMatches({ title, platform, username, days })
+  .then(response => {
+    // Do something...
+    console.log(response);
+  })
+  .catch(err => {
+    // Do something with this error
+    console.log(err);
+  });
 ```
 Output:
 ```
@@ -161,9 +172,15 @@ Output:
 ## Get Summary
 
 ```
-codAPI.getRecentSummary(options, summary => {
-    console.log(summary);
-});
+codAPI.getRecentSummary({ title, platform, username, days })
+  .then(response => {
+    // Do something...
+    console.log(response);
+  })
+  .catch(err => {
+    // Do something with this error
+    console.log(err);
+  });
 ```
 Output:
 ```
@@ -226,9 +243,15 @@ Output:
 ## Get Leaderboards
 
 ```
-codAPI.getLeaderboards(options, leaderboards => {
-    console.log(leaderboards);
-});
+codAPI.getLeaderboards({ title, platform, time, type, mode, username })
+  .then(response => {
+    // Do something...
+    console.log(response);
+  })
+  .catch(err => {
+    // Do something with this error
+    console.log(err);
+  });
 ```
 Output:
 ```

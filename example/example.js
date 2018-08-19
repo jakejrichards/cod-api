@@ -9,9 +9,9 @@ const time = "monthly"; // alltime, monthly, weekly
 const mode = "war"; // career, war (Team Deathmatch), dm (Free-For-All), conf (Kill Confirmed), ctf (Capture The Flag), sd (Search & Destroy), dom (Domination), ball (Gridiron), hp (Hardpoint), 1v1, raid (War)
 
 getProfile({ title, platform, username })
-    .then(profile => {
-        // Do something with the profile object
-        console.log(profile);
+    .then(response => {
+        // Do something...
+        console.log(response);
     })
     .catch(err => {
         // Do something with this error
@@ -19,9 +19,9 @@ getProfile({ title, platform, username })
     });
 
 getRecentMatches({ title, platform, username, days })
-    .then(profile => {
-        // Do something with the recent matches object
-        console.log(profile);
+    .then(response => {
+        // Do something...
+        console.log(response);
     })
     .catch(err => {
         // Do something with this error
@@ -29,9 +29,9 @@ getRecentMatches({ title, platform, username, days })
     });
 
 getRecentSummary({ title, platform, username, days })
-    .then(profile => {
-        // Do something with the recent summary object
-        console.log(profile);
+    .then(response => {
+        // Do something...
+        console.log(response);
     })
     .catch(err => {
         // Do something with this error
@@ -39,9 +39,9 @@ getRecentSummary({ title, platform, username, days })
     });
 
 getLeaderboards({ title, platform, time, type, mode, username })
-    .then(profile => {
-        // Do something with the leaderboards object
-        console.log(profile);
+    .then(response => {
+        // Do something...
+        console.log(response);
     })
     .catch(err => {
         // Do something with this error
