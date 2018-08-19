@@ -1,6 +1,6 @@
 {
   "name": "cod-api",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A Call of Duty Network API written in Node.js",
   "homepage": "https://github.com/jakejrichards/cod-api",
   "bugs": {
