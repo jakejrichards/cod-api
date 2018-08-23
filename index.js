@@ -1,65 +1,68 @@
-const axios = require('axios');
-
-const COD_API_ENDPOINT = 'https://my.callofduty.com/api/papi-client';
-
+"use strict";
+exports.__esModule = true;
+var axios_1 = require("axios");
+// Base Endpoint
+var COD_API_ENDPOINT = 'https://my.callofduty.com/api/papi-client';
 // API Helper
-const getDataFromAPI = uri =>
-    axios.get(uri)
-    .then(({ data }) => {
-        const { status, data: error } = data;
+function getDataFromAPI(uri) {
+    return axios_1["default"].get(uri)
+        .then(function (_a) {
+        var data = _a.data;
+        var status = data.status, error = data.data;
         if (status !== 'success') {
-            throw new Error(`cod-api request failed: ${error.message}`);
+            throw new Error("cod-api request failed: " + error.message);
         }
         return data;
     });
-
-// API Methods
-const getLeaderboards = ({ title, platform, time, type, mode, username }) => {
-    const leaderboardEndpoint = COD_API_ENDPOINT + '/leaderboards/v2';
-    const uri = leaderboardEndpoint +
-                `/title/${title}` +
-                `/platform/${platform}` +
-                `/time/${time}` +
-                `/type/${type}` +
-                `/mode/${mode}` +
-                `/gamer/${username}`;
-    return getDataFromAPI(uri);
-};
-
-const getProfile = ({ title, platform, username }) => {
-    const profileEndpoint = COD_API_ENDPOINT + '/crm/cod/v2';
-    const uri = profileEndpoint +
-                `/title/${title}` +
-                `/platform/${platform}` +
-                `/gamer/${username}` +
-                `/profile`;
-    return getDataFromAPI(uri);
-};
-
-const getRecentMatches = ({ title, platform, username, days }) => {
-    const recentMatchesEndpoint = COD_API_ENDPOINT + '/crm/cod/v2';
-    const uri = recentMatchesEndpoint +
-                `/title/${title}` +
-                `/platform/${platform}` +
-                `/gamer/${username}` +
-                `/matches/days/${days}`;
-    return getDataFromAPI(uri);
-};
-
-const getRecentSummary = ({ title, platform, username, days }) => {
-    const recentSummaryEndpoint = COD_API_ENDPOINT + '/crm/cod/v2';
-    const uri = recentSummaryEndpoint +
-                `/title/${title}` +
-                `/platform/${platform}` +
-                `/gamer/${username}` +
-                `/matches/days/${days}`;
-    return getDataFromAPI(uri);
-};
-
-
-module.exports = {
-    getLeaderboards,
-    getProfile,
-    getRecentMatches,
-    getRecentSummary,
 }
+// API Methods
+function getLeaderboards(_a) {
+    var title = _a.title, platform = _a.platform, time = _a.time, type = _a.type, mode = _a.mode, username = _a.username;
+    var leaderboardEndpoint = COD_API_ENDPOINT + '/leaderboards/v2';
+    var uri = leaderboardEndpoint +
+        ("/title/" + title) +
+        ("/platform/" + platform) +
+        ("/time/" + time) +
+        ("/type/" + type) +
+        ("/mode/" + mode) +
+        ("/gamer/" + username);
+    return getDataFromAPI(uri);
+}
+exports.getLeaderboards = getLeaderboards;
+;
+function getProfile(_a) {
+    var title = _a.title, platform = _a.platform, username = _a.username;
+    var profileEndpoint = COD_API_ENDPOINT + '/crm/cod/v2';
+    var uri = profileEndpoint +
+        ("/title/" + title) +
+        ("/platform/" + platform) +
+        ("/gamer/" + username) +
+        "/profile";
+    return getDataFromAPI(uri);
+}
+exports.getProfile = getProfile;
+;
+function getRecentMatches(_a) {
+    var title = _a.title, platform = _a.platform, username = _a.username, days = _a.days;
+    var recentMatchesEndpoint = COD_API_ENDPOINT + '/crm/cod/v2';
+    var uri = recentMatchesEndpoint +
+        ("/title/" + title) +
+        ("/platform/" + platform) +
+        ("/gamer/" + username) +
+        ("/matches/days/" + days);
+    return getDataFromAPI(uri);
+}
+exports.getRecentMatches = getRecentMatches;
+;
+function getRecentSummary(_a) {
+    var title = _a.title, platform = _a.platform, username = _a.username, days = _a.days;
+    var recentSummaryEndpoint = COD_API_ENDPOINT + '/crm/cod/v2';
+    var uri = recentSummaryEndpoint +
+        ("/title/" + title) +
+        ("/platform/" + platform) +
+        ("/gamer/" + username) +
+        ("/matches/days/" + days);
+    return getDataFromAPI(uri);
+}
+exports.getRecentSummary = getRecentSummary;
+;
