@@ -1,13 +1,9 @@
 # cod-api
-A Call of Duty API written in Node.js
+A Call of Duty API written in TypeScript
 * Get profile information - prestige, rank, xp, and more...
 * Get recent matches and stats - map, mode, win/loss, kills, deaths, SPM, K/D Ratio, and more...
 * Get leaderboard information - weekly, monthly, alltime, for all game modes
 * Not licensed by or affiliated with Activision or Call of Duty
-
-## Requirements
-
-Node.js
 
 ### Installing
 
@@ -52,7 +48,7 @@ codAPI.getProfile({ title, platform, username })
     console.log(err);
   });
 ```
-Output:
+Sample Output:
 
 ```
 { title: 'wwii',
@@ -87,7 +83,7 @@ codAPI.getRecentMatches({ title, platform, username, days })
     console.log(err);
   });
 ```
-Output:
+Sample Output:
 ```
 [ { utcStartSeconds: 1518474308,
     utcEndSeconds: 1518474994,
@@ -104,7 +100,8 @@ Output:
        team: 'axis',
        rank: 41,
        prestige: 5,
-       loadouts: [Object] },
+       loadouts: [Object]
+     },
     playerStats: 
      { kills: 0,
        shotsMissed: 634,
@@ -127,46 +124,10 @@ Output:
        assists: 10,
        divisionXpResistance: 0,
        shotsFired: 849,
-       deaths: 0 } },
-  { utcStartSeconds: 1518473117,
-    utcEndSeconds: 1518473590,
-    duration: 472,
-    map: 'mp_forest_01',
-    mode: 'hp',
-    result: 'none',
-    winningTeam: 'axis',
-    privateMatch: false,
-    gameBattle: false,
-    playlistName: null,
-    player: 
-     { awards: [Object],
-       team: 'axis',
-       rank: 41,
-       prestige: 5,
-       loadouts: [Object] },
-    playerStats: 
-     { kills: 0,
-       shotsMissed: 366,
-       kdRatio: 0,
-       distanceTravelled: 58908.19921875,
-       divisionXpMountain: 0,
-       accuracy: 0.2294736842105263,
-       divisionXpExpeditionary: 0,
-       divisionXpInfantry: 0,
-       divisionXpArmored: 0,
-       shotsLanded: 109,
-       divisionXpAirborne: 0,
-       avgSpeed: 185.8302764892578,
-       avgKillDistance: 413.4194641113281,
-       score: 3940,
-       totalXp: 8000,
-       timePlayed: 472.45,
-       headshots: 3,
-       divisionXpNone: 0,
-       assists: 10,
-       divisionXpResistance: 0,
-       shotsFired: 475,
-       deaths: 0 } } ]
+       deaths: 0
+     }
+  }
+]
 ```
 
 ## Get Summary
@@ -182,7 +143,7 @@ codAPI.getRecentSummary({ title, platform, username, days })
     console.log(err);
   });
 ```
-Output:
+Sample Output:
 ```
 { all: 
    { kills: 88,
@@ -210,34 +171,9 @@ Output:
      timePlayed: 9544.75,
      matchesPlayed: 12,
      divisionXpNone: 0,
-     shotsFired: 3938 },
-  war: 
-   { kills: 88,
-     distanceTravelled: 182523.109375,
-     divisionXpMountain: 0,
-     accuracy: 0.28885832187070154,
-     divisionXpExpeditionary: 0,
-     losses: 1,
-     shotsLanded: 420,
-     score: 10245,
-     totalXp: 49200,
-     headshots: 1,
-     assists: 18,
-     divisionXpResistance: 4275,
-     scorePerMinute: 172.4384599200505,
-     deaths: 50,
-     wins: 4,
-     shotsMissed: 1034,
-     kdRatio: 1.76,
-     divisionXpInfantry: 0,
-     divisionXpArmored: 0,
-     divisionXpAirborne: 0,
-     avgSpeed: 706.1992034912109,
-     avgKillDistance: 1853.9194030761719,
-     timePlayed: 3564.75,
-     matchesPlayed: 6,
-     divisionXpNone: 0,
-     shotsFired: 1454 } }
+     shotsFired: 3938
+   }
+}
 ```
 
 ## Get Leaderboards
@@ -253,7 +189,7 @@ codAPI.getLeaderboards({ title, platform, time, type, mode, username })
     console.log(err);
   });
 ```
-Output:
+Sample Output:
 ```
 { title: 'wwii',
   platform: 'psn',
