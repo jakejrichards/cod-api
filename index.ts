@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 type GameMode =
     '1v1' | // 1v1 Arena
     'ball' | // Gridiron
@@ -54,13 +52,14 @@ const COD_API_ENDPOINT = 'https://my.callofduty.com/api/papi-client';
 
 // API Helper
 function getDataFromAPI(uri: string) {
-    return axios.get(uri)
-        .then(({ data }) => {
-            const { status, data: error } = data;
+    return fetch(uri)
+        .then(response => response.json())
+        .then(response => {
+            const { status, data: error } = response;
             if (status !== 'success') {
                 throw new Error(`cod-api request failed: ${error.message}`);
             }
-            return data;
+            return response;
         });
 }
 
