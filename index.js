@@ -1,18 +1,17 @@
 "use strict";
 exports.__esModule = true;
-var axios_1 = require("axios");
 // Base Endpoint
 var COD_API_ENDPOINT = 'https://my.callofduty.com/api/papi-client';
 // API Helper
 function getDataFromAPI(uri) {
-    return axios_1["default"].get(uri)
-        .then(function (_a) {
-        var data = _a.data;
-        var status = data.status, error = data.data;
+    return fetch(uri)
+        .then(function (response) { return response.json(); })
+        .then(function (response) {
+        var status = response.status, error = response.data;
         if (status !== 'success') {
             throw new Error("cod-api request failed: " + error.message);
         }
-        return data;
+        return response;
     });
 }
 // API Methods
