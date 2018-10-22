@@ -25,8 +25,8 @@ const codAPI = require("cod-api");
 // If you are in a browser environment or one that supports ES6 imports
 import codAPI from 'cod-api';
 
-const title = "wwii"; // bo3, iw, wwii
-const platform = "psn"; // psn, xbl, steam
+const title = "wwii"; // bo3, iw, wwii, bo4
+const platform = "psn"; // psn, xbl, steam, battle
 const username = "Consisttt"; // username
 const days = 7; // amount of days (required for recent matches & summary),
 const type = "core"; // core, hc, arena

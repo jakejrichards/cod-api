@@ -24,12 +24,14 @@ type LeaderboardDuration =
 type Platform =
     'psn' | // Playstation Network
     'steam' | // Steam
-    'xbl'; // Xbox Live
+    'xbl' | // Xbox Live
+    'battle'; // Battle.net (Black Ops 4)
 
 type Title =
     'bo3' | // Black Ops 3
     'iw' | // Infinite Warfare
-    'wwii'; // World War II
+    'wwii' | // World War II
+    'bo4'; // Black Ops 4
 
 interface BaseOptions {
     platform: Platform;
