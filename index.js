@@ -1,10 +1,11 @@
 "use strict";
 exports.__esModule = true;
+var node_fetch_1 = require("node-fetch");
 // Base Endpoint
 var COD_API_ENDPOINT = 'https://my.callofduty.com/api/papi-client';
 // API Helper
 function getDataFromAPI(uri) {
-    return fetch(uri)
+    return node_fetch_1["default"](uri)
         .then(function (response) { return response.json(); })
         .then(function (response) {
         var status = response.status, error = response.data;

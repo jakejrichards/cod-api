@@ -34,6 +34,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "node-fetch": "^2.3.0",
     "typescript": "^3.0.1"
   },
   "repository": "github:jakejrichards/cod-api",

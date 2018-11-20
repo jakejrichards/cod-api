@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 type GameMode =
     '1v1' | // 1v1 Arena
     'ball' | // Gridiron
