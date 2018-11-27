@@ -2,12 +2,16 @@
   "name": "cod-api",
   "version": "3.4.1",
   "description": "A Call of Duty Network API written in Node.js",
+  "scripts": {
+    "build": "tsc"
+  },
   "homepage": "https://github.com/jakejrichards/cod-api",
   "bugs": {
     "url": "https://github.com/jakejrichards/cod-api/issues",
     "email": "jjrichar@go.olemiss.edu"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": {
     "name": "Jake Richards",
     "email": "jjrichar@go.olemiss.edu"
@@ -38,5 +42,8 @@
     "typescript": "^3.0.1"
   },
   "repository": "github:jakejrichards/cod-api",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "devDependencies": {
+    "@types/node-fetch": "^2.1.4"
+  }
 }

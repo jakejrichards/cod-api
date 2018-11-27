@@ -1,4 +1,4 @@
-const { getLeaderboards, getProfile, getRecentMatches, getRecentSummary } = require('../index'); // require('cod-api');
+const { LegacyCOD } = require('../dist/index'); // require('cod-api');
 
 const title = "wwii"; // bo3, iw, wwii
 const platform = "psn"; // psn, xbl, steam
@@ -8,7 +8,7 @@ const type = "core"; // core, hc, arena
 const time = "monthly"; // alltime, monthly, weekly
 const mode = "war"; // career, war (Team Deathmatch), dm (Free-For-All), conf (Kill Confirmed), ctf (Capture The Flag), sd (Search & Destroy), dom (Domination), ball (Gridiron), hp (Hardpoint), 1v1, raid (War)
 
-getProfile({ title, platform, username })
+LegacyCOD.getProfile({ title, platform, username })
     .then(response => {
         // Do something...
         console.log(response);
@@ -18,7 +18,7 @@ getProfile({ title, platform, username })
         console.log(err);
     });
 
-getRecentMatches({ title, platform, username, days })
+LegacyCOD.getRecentMatches({ title, platform, username, days })
     .then(response => {
         // Do something...
         console.log(response);
@@ -28,7 +28,7 @@ getRecentMatches({ title, platform, username, days })
         console.log(err);
     });
 
-getRecentSummary({ title, platform, username, days })
+LegacyCOD.getRecentSummary({ title, platform, username, days })
     .then(response => {
         // Do something...
         console.log(response);
@@ -38,7 +38,7 @@ getRecentSummary({ title, platform, username, days })
         console.log(err);
     });
 
-getLeaderboards({ title, platform, time, type, mode, username })
+LegacyCOD.getLeaderboards({ title, platform, time, type, mode, username })
     .then(response => {
         // Do something...
         console.log(response);
