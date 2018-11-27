@@ -692,7 +692,7 @@ export interface Lifetime {
     map: Maps;
 }
 
-export interface WeeklyStats {
+export interface BaseStats {
     kills: number;
     matchXp: number;
     nemesisDeaths: number;
@@ -742,16 +742,16 @@ export interface WeeklyStats {
 }
 
 export interface WeeklyModes {
-    dom: WeeklyStats;
-    conf_hc: WeeklyStats;
-    conf: WeeklyStats;
-    koth: WeeklyStats;
-    tdm_hc: WeeklyStats;
-    tdm: WeeklyStats;
+    dom: BaseStats;
+    conf_hc: BaseStats;
+    conf: BaseStats;
+    koth: BaseStats;
+    tdm_hc: BaseStats;
+    tdm: BaseStats;
 }
 
 export interface Weekly {
-    all: WeeklyStats;
+    all: BaseStats;
     mode: WeeklyModes;
     map: object;
 }
@@ -779,4 +779,40 @@ export interface Data {
 export interface RawMultiplayerObject {
     status: string;
     data: Data;
+}
+
+export interface Match {
+    utcStartSeconds: number,
+    utcEndSeconds: number,
+    map: keyof Maps,
+    mode: keyof Modes,
+    matchID: string,
+    duration: number,
+    version: number,
+    gameType: string,
+    result: string,
+    winningTeam: string,
+    gameBattle: boolean,
+    playlistName: any,
+    team1Score: number,
+    team2Score: number,
+    isPresentAtEnd: boolean,
+    player: {
+        team: string;
+        rank: number;
+        prestige: number;
+    },
+    playerStats: BaseStats,
+    arena: boolean,
+    privateMatch: boolean,
+}
+
+export interface MatchesData {
+    summary: Record<keyof Modes | 'all', BaseStats>;
+    matches: Match[];
+}
+
+export interface RawMultiplayerMatchesObject {
+    status: string;
+    data: MatchesData;
 }

@@ -1,25 +1,53 @@
 import { COD_API_ENDPOINT, getDataFromAPI } from './utils';
-import { RawBlackoutObject } from './blackout';
-import { RawMultiplayerObject } from './multiplayer';
-import { RawZombiesObject } from './zombies';
+import { RawBlackoutMatchesObject, RawBlackoutObject } from './blackout';
+import { RawMultiplayerMatchesObject, RawMultiplayerObject } from './multiplayer';
+import { RawZombiesMatchesObject, RawZombiesObject } from './zombies';
 
 const BO4_ENDPOINT = `${COD_API_ENDPOINT}/crm/cod/v2/title/bo4`;
 
 type Platform = 'psn' | 'xbl' | 'battle';
-
-export function getRawBlackoutStats(username: string, platform: Platform) {
-    const uri = `${BO4_ENDPOINT}/platform/${platform}/gamer/${username}/profile?type=blackout`;
-    return getDataFromAPI<RawBlackoutObject>(uri);
-}
 
 export function getRawMultiplayerStats(username: string, platform: Platform) {
     const uri = `${BO4_ENDPOINT}/platform/${platform}/gamer/${username}/profile?type=mp`;
     return getDataFromAPI<RawMultiplayerObject>(uri)
 }
 
+export function getRawBlackoutStats(username: string, platform: Platform) {
+    const uri = `${BO4_ENDPOINT}/platform/${platform}/gamer/${username}/profile?type=blackout`;
+    return getDataFromAPI<RawBlackoutObject>(uri);
+}
+
 export function getRawZombiesStats(username: string, platform: Platform) {
     const uri = `${BO4_ENDPOINT}/platform/${platform}/gamer/${username}/profile?type=zombies`;
     return getDataFromAPI<RawZombiesObject>(uri);
+}
+
+interface MatchesProps {
+    username: string;
+    platform: Platform;
+    start?: Date;
+    end?: Date;
+}
+
+export function getRawMultiplayerMatchesStats({ username, platform, start, end }: MatchesProps) {
+    const startTimestamp = start ? start.getTime() : 0;
+    const endTimestamp = end ? end.getTime() : 0;
+    const uri = `${BO4_ENDPOINT}/platform/${platform}/gamer/${username}/matches/mp/start/${startTimestamp}/end/${endTimestamp}/details`;
+    return getDataFromAPI<RawMultiplayerMatchesObject>(uri);
+}
+
+export function getRawBlackoutMatchesStats({ username, platform, start, end }: MatchesProps) {
+    const startTimestamp = start ? start.getTime() : 0;
+    const endTimestamp = end ? end.getTime() : 0;
+    const uri = `${BO4_ENDPOINT}/platform/${platform}/gamer/${username}/matches/warzone/start/${startTimestamp}/end/${endTimestamp}/details`;
+    return getDataFromAPI<RawBlackoutMatchesObject>(uri);
+}
+
+export function getRawZombiesMatchesStats({ username, platform, start, end }: MatchesProps) {
+    const startTimestamp = start ? start.getTime() : 0;
+    const endTimestamp = end ? end.getTime() : 0;
+    const uri = `${BO4_ENDPOINT}/platform/${platform}/gamer/${username}/matches/zombies/start/${startTimestamp}/end/${endTimestamp}/details`;
+    return getDataFromAPI<RawZombiesMatchesObject>(uri);
 }
 
 /* These Blackout Methods are not populated with data yet
@@ -59,4 +87,17 @@ export async function getLifetimeMultiplayerStats(username: string, platform: Pl
 export async function getWeeklyMultiplayerStats(username: string, platform: Platform) {
     const rawMultiplayerObject = await getRawMultiplayerStats(username, platform);
     return rawMultiplayerObject.data.mp.weekly;
+}
+
+export async function getMultiplayerMatchesStats(props: MatchesProps) {
+    const rawMatchesObject = await getRawMultiplayerMatchesStats(props);
+    return rawMatchesObject.data.matches;
+}
+export async function getBlackoutMatchesStats(props: MatchesProps) {
+    const rawMatchesObject = await getRawBlackoutMatchesStats(props);
+    return rawMatchesObject.data.matches;
+}
+export async function getZombiesMatchesStats(props: MatchesProps) {
+    const rawMatchesObject = await getRawZombiesMatchesStats(props);
+    return rawMatchesObject.data.matches;
 }

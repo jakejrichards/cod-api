@@ -20,6 +20,23 @@ BO4.getRawZombiesStats(username, platform)
         console.log(`${username} (${platform}) is level ${raw.data.mp.level} in Black Ops 4 Zombies`);
     });
 
+const startDate = new Date(1543128717000);
+
+BO4.getRawMultiplayerMatchesStats({ username: 'Consisttt', platform: 'psn', start: startDate })
+    .then(raw => {
+        console.log(`${username} (${platform}) has ${raw.data.matches.length} recent matches since ${startDate.toDateString()} in Black Ops 4 Multiplayer`);
+    })
+
+BO4.getRawBlackoutMatchesStats({ username: 'Consisttt', platform: 'psn', start: startDate })
+    .then(raw => {
+        console.log(`${username} (${platform}) has ${raw.data.matches.length} recent matches since ${startDate.toDateString()} in Black Ops 4 Blackout`);
+    })
+
+BO4.getRawZombiesMatchesStats({ username: 'Consisttt', platform: 'psn', start: startDate })
+    .then(raw => {
+        console.log(`${username} (${platform}) has ${raw.data.matches.length} recent matches since ${startDate.toDateString()} in Black Ops 4 Zombies`);
+    })
+
 // Specific Methods
 
 BO4.getLifetimeMultiplayerStats(username, platform)
@@ -31,6 +48,24 @@ BO4.getWeeklyMultiplayerStats(username, platform)
     .then(data => {
         console.log(`${username} (${platform}) has ${data.all.wins} win(s) this week in Black Ops 4 Multiplayer`);
     });
+
+BO4.getMultiplayerMatchesStats({ username, platform })
+    .then(matches => {
+        const [ match ] = matches;
+        console.log(`${username} (${platform}) got ${match.playerStats.kills} kills in ${match.mode} on ${match.map}`);
+    })
+
+BO4.getBlackoutMatchesStats({ username, platform })
+    .then(matches => {
+        const [ match ] = matches;
+        console.log(`${username} (${platform}) got ${match.playerStats.kills} kills in ${match.mode} on ${match.map}`);
+    })
+
+BO4.getZombiesMatchesStats({ username, platform })
+    .then(matches => {
+        const [ match ] = matches;
+        console.log(`${username} (${platform}) got ${match.playerStats.kills} kills in ${match.mode} on ${match.map}`);
+    })
 
 BO4.getOverallZombiesStats(username, platform)
     .then(data => {

@@ -45,6 +45,24 @@ BO4.getRawZombiesStats(username, platform)
        
     });
 
+const start = new Date(/*start time*/);
+const end = new Date(/*end time*/);
+
+BO4.getRawMultiplayerMatchesStats({ username, platform, start, end })
+    .then(matchesStats => {
+        
+    });
+
+BO4.getRawZombiesMatchesStats({ username, platform, start, end })
+    .then(matchesStats => {
+        
+    });
+
+BO4.getRawBlackoutMatchesStats({ username, platform, start, end })
+    .then(matchesStats => {
+        
+    });
+
 // Specific Methods
 
 BO4.getLifetimeMultiplayerStats(username, platform)
@@ -67,6 +85,21 @@ BO4.getOverallBlackoutStats(username, platform)
         const blackoutWins = data.wins;
     });
 
+BO4.getMultiplayerMatchesStats({ username, platform, start, end })
+    .then(matches => {
+        const [ match ] = matches;
+    })
+
+BO4.getBlackoutMatchesStats({ username, platform, start, end })
+    .then(matches => {
+        const [ match ] = matches;
+    })
+
+BO4.getZombiesMatchesStats({ username, platform, start, end })
+    .then(matches => {
+        const [ match ] = matches;
+    })
+
 ```
 
 _These endpoints are not yet populated with data on the official call of duty api:_
@@ -79,6 +112,8 @@ _These endpoints are not yet populated with data on the official call of duty ap
 ## Get Profile
 
 ```
+import { LegacyCOD } from 'cod-api';
+
 LegacyCOD.getProfile({ title, platform, username })
     .then(response => {
         // Do something...
@@ -114,7 +149,9 @@ engagement: null }
 ## Get Recent Matches
 
 ```
-codAPI.getRecentMatches({ title, platform, username, days })
+import { LegacyCOD } from 'cod-api';
+
+LegacyCOD.getRecentMatches({ title, platform, username, days })
     .then(response => {
         // Do something...
         console.log(response);
@@ -174,7 +211,9 @@ Sample Output:
 ## Get Summary
 
 ```
-codAPI.getRecentSummary({ title, platform, username, days })
+import { LegacyCOD } from 'cod-api';
+
+LegacyCOD.getRecentSummary({ title, platform, username, days })
     .then(response => {
         // Do something...
         console.log(response);
@@ -220,7 +259,9 @@ Sample Output:
 ## Get Leaderboards
 
 ```
-codAPI.getLeaderboards({ title, platform, time, type, mode, username })
+import { LegacyCOD } from 'cod-api';
+
+LegacyCOD.getLeaderboards({ title, platform, time, type, mode, username })
     .then(response => {
         // Do something...
         console.log(response);

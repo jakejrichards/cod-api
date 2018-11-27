@@ -168,3 +168,73 @@ export interface RawBlackoutObject {
     status: string;
     data: Data;
 }
+
+export interface PlayerStats {
+    kills: number;
+    playerBody: number;
+    matchXp: number;
+    lootTimePlayed: number;
+    averageSpeedDuringMatch: number;
+    scoreXp: number;
+    playerHead: number;
+    numUavCalled: number;
+    losses: number;
+    timePlayedMoving: number;
+    totalDistanceTravelled: number;
+    totalXp: number;
+    startXp: number;
+    score: number;
+    challengesCompletedCount: number;
+    headshots: number;
+    endRank: number;
+    assists: number;
+    gamesPlayed: number;
+    misses: number;
+    objectiveTime: number;
+    killsDenied: number;
+    deaths: number;
+    wins: number;
+    percentageOfTimeMoving: number;
+    averageKillDistance: number;
+    killsConfirmed: number;
+    totalTimePlayedS: number;
+    prestige: number;
+    playerPlacement: number;
+    hits: number;
+    endXp: number;
+    teamkills: number;
+    weaponPickupsCount: number;
+    suicides: number;
+    lootXpEarned: number;
+    timePlayedAlive: number;
+    startRank: number;
+    teamPlacement: number;
+    position: number;
+    escortTime: number;
+}
+
+export interface Match {
+    utcStartSeconds: number;
+    utcEndSeconds: number;
+    map: string;
+    mode: string;
+    matchID: string;
+    duration: number;
+    version: number;
+    gameType: string;
+    playerCount: number;
+    playlistName: any;
+    playerStats: BaseStats;
+    draw: boolean;
+    privateMatch: boolean;
+}
+
+export interface MatchesData {
+    summary: Record<keyof Mode | 'all', BaseStats>;
+    matches: Match[];
+}
+
+export interface RawBlackoutMatchesObject {
+    status: string;
+    data: MatchesData;
+}
