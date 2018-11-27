@@ -22,11 +22,6 @@ export function getRawZombiesStats(username: string, platform: Platform) {
     return getDataFromAPI<RawZombiesObject>(uri);
 }
 
-export async function getOverallBlackoutStats(username: string, platform: Platform) {
-    const rawBlackoutObject = await getRawBlackoutStats(username, platform);
-    return rawBlackoutObject.data.mp.lifetime.all;
-}
-
 /* These Blackout Methods are not populated with data yet
 
 export async function getSoloBlackoutStats(username: string, platform: Platform) {
@@ -45,6 +40,11 @@ export async function getQuadBlackoutStats(username: string, platform: Platform)
 }
 
 */
+
+export async function getOverallBlackoutStats(username: string, platform: Platform) {
+    const rawBlackoutObject = await getRawBlackoutStats(username, platform);
+    return rawBlackoutObject.data.mp.lifetime.all;
+}
 
 export async function getOverallZombiesStats(username: string, platform: Platform) {
     const rawZombiesObject = await getRawZombiesStats(username, platform);
