@@ -1,6 +1,6 @@
 import { COD_API_ENDPOINT, getDataFromAPI } from './utils';
 
-type GameMode =
+export type GameMode =
     '1v1' | // 1v1 Arena
     'ball' | // Gridiron
     'career' | // Career (all modes)
@@ -13,37 +13,37 @@ type GameMode =
     'raid' | // War
     'war'; // Team Deathmatch
 
-type GameType =
+export type GameType =
     'arena' | // Ranked Play
     'core' | // Core
     'hc'; // Hardcore
 
-type LeaderboardDuration =
+export type LeaderboardDuration =
     'alltime' |
     'monthly' |
     'weekly';
 
-type Platform =
+export type Platform =
     'psn' | // Playstation Network
     'steam' | // Steam
     'xbl'; // Xbox Live
 
-type Title =
+export type Title =
     'bo3' | // Black Ops 3
     'iw' | // Infinite Warfare
     'wwii'; // World War II
 
-interface BaseOptions {
+export interface BaseOptions {
     platform: Platform;
     title: Title;
     username: string;
 }
 
-interface RecentOptions extends BaseOptions {
+export interface RecentOptions extends BaseOptions {
     days: number;
 }
 
-interface LeaderboardOptions extends BaseOptions {
+export interface LeaderboardOptions extends BaseOptions {
     mode: GameMode;
     time: LeaderboardDuration;
     type: GameType

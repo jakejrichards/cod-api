@@ -686,7 +686,7 @@ export interface Maps {
     mp_jungle2: Map;
 }
 
-export interface Lifetime {
+export interface MultiplayerLifetime {
     all: MultiplayerOverall;
     mode: Modes;
     map: Maps;
@@ -750,15 +750,15 @@ export interface WeeklyModes {
     tdm: BaseStats;
 }
 
-export interface Weekly {
+export interface MultiplayerWeekly {
     all: BaseStats;
     mode: WeeklyModes;
     map: object;
 }
 
 export interface Mp {
-    lifetime: Lifetime;
-    weekly: Weekly;
+    lifetime: MultiplayerLifetime;
+    weekly: MultiplayerWeekly;
     level: number;
     maxLevel: number;
     levelXpRemainder: number;
@@ -781,7 +781,7 @@ export interface RawMultiplayerObject {
     data: Data;
 }
 
-export interface Match {
+export interface MultiplayerMatch {
     utcStartSeconds: number,
     utcEndSeconds: number,
     map: keyof Maps,
@@ -809,7 +809,7 @@ export interface Match {
 
 export interface MatchesData {
     summary: Record<keyof Modes | 'all', BaseStats>;
-    matches: Match[];
+    matches: MultiplayerMatch[];
 }
 
 export interface RawMultiplayerMatchesObject {

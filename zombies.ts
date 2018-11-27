@@ -562,7 +562,7 @@ export interface Loadout {
     bbgs: Item[];
 }
 
-export interface Match {
+export interface ZombiesMatch {
     utcStartSeconds: number;
     utcEndSeconds: number;
     map: keyof ZombiesMaps;
@@ -587,7 +587,7 @@ export interface Match {
 
 export interface MatchesData {
     summary: Record<keyof Mode | 'all', ZombiesOverall>;
-    matches: Match[];
+    matches: ZombiesMatch[];
 }
 
 export interface RawZombiesMatchesObject {

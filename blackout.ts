@@ -213,7 +213,7 @@ export interface PlayerStats {
     escortTime: number;
 }
 
-export interface Match {
+export interface BlackoutMatch {
     utcStartSeconds: number;
     utcEndSeconds: number;
     map: string;
@@ -231,7 +231,7 @@ export interface Match {
 
 export interface MatchesData {
     summary: Record<keyof Mode | 'all', BaseStats>;
-    matches: Match[];
+    matches: BlackoutMatch[];
 }
 
 export interface RawBlackoutMatchesObject {
