@@ -1,7 +1,7 @@
 {
   "name": "cod-api",
   "version": "4.0.0",
-  "description": "A Call of Duty Network API written in Node.js",
+  "description": "A Call of Duty Network API wrapper written in Typescript",
   "scripts": {
     "build": "tsc"
   },
@@ -38,12 +38,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "node-fetch": "^2.3.0",
-    "typescript": "^3.0.1"
+    "node-fetch": "^2.3.0"
   },
   "repository": "github:jakejrichards/cod-api",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@types/node-fetch": "^2.1.4"
+    "@types/node-fetch": "^2.1.4",
+    "typescript": "^3.1.0"
   }
 }
