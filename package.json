@@ -1,6 +1,6 @@
 {
   "name": "cod-api",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A Call of Duty Network API wrapper written in Typescript",
   "scripts": {
     "build": "tsc"
