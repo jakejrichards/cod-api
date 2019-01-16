@@ -224,7 +224,7 @@ export interface BlackoutMatch {
     gameType: string;
     playerCount: number;
     playlistName: any;
-    playerStats: BaseStats;
+    playerStats: PlayerStats;
     draw: boolean;
     privateMatch: boolean;
 }
